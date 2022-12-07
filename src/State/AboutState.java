@@ -9,8 +9,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
 
-import javax.swing.plaf.FontUIResource;
-
 public class AboutState extends State {
     private Background bg;
 
