@@ -29,7 +29,7 @@ public class MenuState extends State {
         this.stateManager = stateManager;
 
         try {
-            bg = new Background("/Backgrounds/background.png");
+            bg = new Background("/Backgrounds/main_menu.jpg");
             bg.setVector(0, 0);
 
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
@@ -60,8 +60,8 @@ public class MenuState extends State {
     public void draw(Graphics2D g) {
         bg.draw(g);
 
-        Utility.horizontalCenteredText(g, "Ada Apa dengan Sinta", GamePanel.WIDTH, 60, titleFont, Color.black);
-        Utility.horizontalCenteredText(g, "Ada Apa dengan Sinta", GamePanel.WIDTH, 58, titleFont, titleColor);
+        Utility.horizontalCenteredText(g, "Ada Apa dengan Sinta", GamePanel.WIDTH, 300, titleFont, Color.black);
+        Utility.horizontalCenteredText(g, "Ada Apa dengan Sinta", GamePanel.WIDTH, 290, titleFont, titleColor);
 
         g.setFont(font);
 
@@ -69,10 +69,10 @@ public class MenuState extends State {
             if (i == currentChoice) {
                 g.setColor(Color.WHITE);
             } else {
-                g.setColor(new Color(239, 71, 111));
+                g.setColor(Color.DARK_GRAY);
             }
 
-            Utility.horizontalCenteredText(g, options[i], GamePanel.WIDTH, 250 + i * 40, font, g.getColor());
+            Utility.horizontalCenteredText(g, options[i], GamePanel.WIDTH, 360 + i * 45, font, g.getColor());
         }
     }
 
