@@ -103,12 +103,12 @@ public class MenuState extends State {
 
             if (latestCheckpoint == 1) currentCheckpoint = StateManager.OPENINGSTATE;
             if (latestCheckpoint == 2) currentCheckpoint = StateManager.TANGKAP_KIJANG_STATE;
-            if (latestCheckpoint == 3) currentCheckpoint = StateManager.JATAYUSTATE;
-            if (latestCheckpoint == 4) currentCheckpoint = StateManager.HANUMANSTATE;
-            if (latestCheckpoint == 5) currentCheckpoint = StateManager.RAHWANASTATE;
-            if (latestCheckpoint == 6) currentCheckpoint = StateManager.DEATHSTATE;
+            // if (latestCheckpoint == 3) currentCheckpoint = StateManager.JATAYUSTATE;
+            // if (latestCheckpoint == 4) currentCheckpoint = StateManager.HANUMANSTATE;
+            // if (latestCheckpoint == 5) currentCheckpoint = StateManager.RAHWANASTATE;
+            // if (latestCheckpoint == 6) currentCheckpoint = StateManager.DEATHSTATE;
 
-            stateManager.setState(currentCheckpoint);
+            // stateManager.setState(currentCheckpoint);
         }
 
         if (currentChoice == 2) stateManager.setState(StateManager.HIGHSCORESTATE);

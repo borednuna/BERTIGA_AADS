@@ -31,8 +31,8 @@ public class StateManager {
         if (state == MENUSTATE) gameStates[state] = new MenuState(this);
         if (state == ABOUTSTATE) gameStates[state] = new AboutState(this);
         if (state == HIGHSCORESTATE) gameStates[state] = new HighscoreState(this);
-        // if (state == OPENINGSTATE) gameStates[state] = new OpeningState(this);
-        // if (state == TANGKAP_KIJANG_STATE) gameStates[state] = new TangkapkijangState(this);
+        if (state == OPENINGSTATE) gameStates[state] = new OpeningState(this);
+        if (state == TANGKAP_KIJANG_STATE) gameStates[state] = new TangkapkijangState(this);
         // if (state == JATAYUSTATE) gameStates[state] = new JatayuState(this);
         // if (state == HANUMANSTATE) gameStates[state] = new HanumanState(this);
         // if (state == RAHWANASTATE) gameStates[state] = new RahwanaState(this);
