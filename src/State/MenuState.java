@@ -30,7 +30,6 @@ public class MenuState extends State {
 
         try {
             bg = new Background("/Backgrounds/main_menu.jpg");
-            bg.setVector(0, 0);
 
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
             Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf")).getPath()));
@@ -52,9 +51,7 @@ public class MenuState extends State {
     public void init() {}
 
     @Override
-    public void update() {
-        bg.update();
-    }
+    public void update() {}
 
     @Override
     public void draw(Graphics2D g) {

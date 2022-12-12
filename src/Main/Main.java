@@ -13,6 +13,6 @@ public class Main {
         window.pack();
         window.setVisible(true);
 
-       SaveData.createIfNotExist();
+        SaveData.createIfNotExist();
     }
 }

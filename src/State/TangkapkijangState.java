@@ -3,6 +3,9 @@ package State;
 import Main.GamePanel;
 import Utility.*;
 import Map.Background;
+import Entity.*;
+import Entity.Playable.Playable;
+import Entity.Playable.Rama;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,58 +14,63 @@ import java.util.Objects;
 
 public class TangkapkijangState extends State {
     private Background bg;
-
-    private Color titleColor;
-    private Font titleFont;
-
-    private Font font;
+    private Playable main_character = new Rama();
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
 
         try {
             bg = new Background("/Backgrounds/bg_about_state.png");
-            bg.setVector(0, 0);
-
-            Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
-            Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
-
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(ManilaCity);
-            ge.registerFont(AccidentalPrecidency);
-
-            titleColor = new Color(255,235, 72);
-            titleFont = ManilaCity.deriveFont(60f);
-            font = AccidentalPrecidency.deriveFont(50f);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void init() {
-        // TODO Auto-generated method stub
-        
-    }
+    public void init() {}
 
     @Override
     public void update() {
-        bg.update();
+        main_character.update();
     }
 
     @Override
     public void draw(Graphics2D g) {
         bg.draw(g);
+        main_character.draw(g);
     }
 
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.MENUSTATE);
+        if (k == KeyEvent.VK_RIGHT) {
+            main_character.set_x_speed(5);
+            main_character.set_y_speed(0);
+            main_character.set_direction(k);
+        } else if (k == KeyEvent.VK_LEFT) {
+            main_character.set_x_speed(-5);
+            main_character.set_y_speed(0);
+            main_character.set_direction(k);
+        } else if (k == KeyEvent.VK_UP) {
+            main_character.set_y_speed(-5);
+            main_character.set_x_speed(0);
+            main_character.set_direction(k);
+        } else if (k == KeyEvent.VK_DOWN) {
+            main_character.set_y_speed(5);
+            main_character.set_x_speed(0);
+            main_character.set_direction(k);
+        }
     }
 
     @Override
     public void keyReleased(int k) {
-        // TODO Auto-generated method stub
-        
+        if (k == KeyEvent.VK_UP ||
+        k == KeyEvent.VK_DOWN ||
+        k == KeyEvent.VK_LEFT ||
+        k == KeyEvent.VK_RIGHT) {
+            main_character.set_x_speed(0);
+            main_character.set_y_speed(0);
+        }
     }
+
 }
