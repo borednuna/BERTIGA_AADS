@@ -21,10 +21,10 @@ public class AboutState extends State {
         this.stateManager = stateManager;
 
         try {
-            bg = new Background("/Backgrounds/background.png");
+            bg = new Background("/Backgrounds/bg_about_state.png");
             bg.setVector(0, 0);
 
-            Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("Fonts/ManilaCity.ttf")).getPath()));
+            Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
             Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
 
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -50,18 +50,20 @@ public class AboutState extends State {
     @Override
     public void draw(Graphics2D g) {
         bg.draw(g);
-
-        Utility.horizontalCenteredText(g, "About", GamePanel.WIDTH, 60, titleFont, Color.BLACK);
-        Utility.horizontalCenteredText(g, "About", GamePanel.WIDTH, 58, titleFont, titleColor);
-
         g.setFont(font);
         g.setColor(Color.BLACK);
 
         String str = "Ada Apa Dengan Sinta";
-        Utility.horizontalCenteredText(g, str, GamePanel.WIDTH, 150, g.getFont(), g.getColor());
+        Utility.horizontalCenteredText(g, str, GamePanel.WIDTH, 220, font, Color.BLACK);
 
         g.setColor(Color.WHITE);
-        Utility.horizontalCenteredText(g, str, GamePanel.WIDTH, 145, g.getFont(), g.getColor());
+        Utility.horizontalCenteredText(g, str, GamePanel.WIDTH, 215, font, Color.YELLOW);
+
+        String hanun = "Hanun Shaka P (5025211051)";
+        String bila = "Salsabila Fatma A (5025211057)";
+
+        Utility.horizontalCenteredText(g, hanun, GamePanel.WIDTH, 270, g.getFont(), Color.DARK_GRAY);
+        Utility.horizontalCenteredText(g, bila, GamePanel.WIDTH, 320, g.getFont(), g.getColor());
     }
 
     @Override

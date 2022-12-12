@@ -18,10 +18,10 @@ public class HighscoreState extends State {
         this.stateManager = stateManager;
 
         try {
-            bg = new Background("/Backgrounds/background.png");
+            bg = new Background("/Backgrounds/bg_highscore_state.png");
             bg.setVector(0, 0);
 
-            Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("Fonts/ManilaCity.ttf")).getPath()));
+            Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
             Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
 
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -48,8 +48,8 @@ public class HighscoreState extends State {
     public void draw(Graphics2D g) {
         bg.draw(g);
 
-        Utility.horizontalCenteredText(g, "High Score", GamePanel.WIDTH, 60, titleFont, Color.BLACK);
-        Utility.horizontalCenteredText(g, "High Score", GamePanel.WIDTH, 55, titleFont, titleColor);
+        Utility.horizontalCenteredText(g, "High Score", GamePanel.WIDTH, 280, titleFont, Color.BLACK);
+        Utility.horizontalCenteredText(g, "High Score", GamePanel.WIDTH, 275, titleFont, titleColor);
 
         g.setFont(font);
 
@@ -61,19 +61,11 @@ public class HighscoreState extends State {
 
         g.setColor(Color.BLACK);
 
-        Utility.horizontalCenteredText(g, level1, GamePanel.WIDTH, 200, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level2, GamePanel.WIDTH, 250, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level3, GamePanel.WIDTH, 300, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level4, GamePanel.WIDTH, 350, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level5, GamePanel.WIDTH, 400, g.getFont(), g.getColor());
-
-        g.setColor(Color.WHITE);
-
-        Utility.horizontalCenteredText(g, level1, GamePanel.WIDTH, 205, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level2, GamePanel.WIDTH, 255, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level3, GamePanel.WIDTH, 305, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level4, GamePanel.WIDTH, 355, g.getFont(), g.getColor());
-        Utility.horizontalCenteredText(g, level5, GamePanel.WIDTH, 405, g.getFont(), g.getColor());
+        Utility.horizontalCenteredText(g, level1, GamePanel.WIDTH, 350, g.getFont(), Color.WHITE);
+        Utility.horizontalCenteredText(g, level2, GamePanel.WIDTH, 400, g.getFont(), Color.WHITE);
+        Utility.horizontalCenteredText(g, level3, GamePanel.WIDTH, 450, g.getFont(), Color.WHITE);
+        Utility.horizontalCenteredText(g, level4, GamePanel.WIDTH, 500, g.getFont(), Color.WHITE);
+        Utility.horizontalCenteredText(g, level5, GamePanel.WIDTH, 550, g.getFont(), Color.WHITE);
     }
     @Override
     public void keyPressed(int k) {
