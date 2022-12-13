@@ -15,25 +15,29 @@ import java.util.Objects;
 
 public class TangkapkijangState extends State {
     private Background bg;
-    private Playable main_character = new Rama();
     private Map map = new Map(50);
+    private Playable main_character;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
-        this.map.loadMap("/Map/tangkapkijang.map");
-        this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
-        this.map.setPosition(98, 30);
-
+        
         try {
             bg = new Background("/Backgrounds/bg_LABIRINTANGKAPKIJANG.png");
             
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        init();
     }
 
     @Override
-    public void init() {}
+    public void init() {
+        this.map.loadMap("/Map/tangkapkijang.map");
+        this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
+        this.map.setPosition(98, 30);
+        main_character = new Rama(map);
+    }
 
     @Override
     public void update() {

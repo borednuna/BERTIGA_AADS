@@ -17,8 +17,9 @@ public abstract class Playable {
     public abstract void draw(Graphics g);
     public abstract void set_x_speed(int x);
     public abstract void set_y_speed(int y);
+    public abstract void set_x(int x);
+    public abstract void set_y(int y);
     public abstract void set_direction(int dir);
     public abstract void reduceHealth();
-    public abstract void collide();
     public abstract void update();
 }

@@ -1,6 +1,7 @@
 package Map;
 
 import Main.GamePanel;
+import Entity.Playable.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -17,10 +18,10 @@ public class Map {
 	private double y;
 	
 	// bounds
-	// private int xmin;
-	// private int ymin;
-	// private int xmax;
-	// private int ymax;
+	private int xmin;
+	private int ymin;
+	private int xmax;
+	private int ymax;
 	
 	// map
 	private int[][] map;
@@ -40,6 +41,10 @@ public class Map {
 	private int colOffset;
 	private int numRowsToDraw;
 	private int numColsToDraw;
+
+    // checkCollision
+    private int currentColumn;
+    private int currentRow;
 	
 	public Map(int tileSize) {
 		this.tileSize = tileSize;
@@ -122,12 +127,52 @@ public class Map {
 
 	}
 	
-	// private void fixBounds() {
-	// 	if(x < xmin) x = xmin;
-	// 	if(y < ymin) y = ymin;
-	// 	if(x > xmax) x = xmax;
-	// 	if(y > ymax) y = ymax;
-	// }
+	private void fixBounds() {
+		if(x < xmin) x = xmin;
+		if(y < ymin) y = ymin;
+		if(x > xmax) x = xmax;
+		if(y > ymax) y = ymax;
+	}
+
+    public void collideRight(int positionX, int positionY, Playable player) {
+        currentColumn = (int)((positionX - 98) / tileSize);
+        currentRow = (int)((positionY - 30) / tileSize);
+        
+        if (map[currentRow][currentColumn + 1] == 0) {
+            player.set_x_speed(0);
+            player.set_x(currentColumn * tileSize + 100);
+        }
+    }
+
+    public void collideLeft(int positionX, int positionY, Playable player) {
+        currentColumn = (int)((positionX - 98) / tileSize);
+        currentRow = (int)((positionY - 30) / tileSize);
+        
+        if (map[currentRow][currentColumn] == 0) {
+            player.set_x_speed(0);
+            player.set_x((currentColumn + 1) * tileSize + 100);
+        }
+    }
+
+    public void collideUp(int positionX, int positionY, Playable player) {
+        currentColumn = (int)((positionX - 98) / tileSize);
+        currentRow = (int)((positionY - 30) / tileSize);
+        
+        if (map[currentRow][currentColumn] == 0) {
+            player.set_y_speed(0);
+            player.set_y((currentRow + 1) * tileSize + 30);
+        }
+    }
+
+    public void collideDown(int positionX, int positionY, Playable player) {
+        currentColumn = (int)((positionX - 98) / tileSize);
+        currentRow = (int)((positionY - 30) / tileSize);
+        
+        if (map[currentRow + 1][currentColumn] == 0) {
+            player.set_y_speed(0);
+            player.set_y(currentRow * tileSize + 30);
+        }
+    }
 	
 	public void draw(Graphics2D g) {
 		for(

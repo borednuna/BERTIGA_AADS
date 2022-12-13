@@ -4,16 +4,21 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import java.io.File;
+
+import Main.GamePanel;
+import Map.Map;
+
 import java.io.IOException;
 import java.util.Objects;
 
 public class Rama extends Playable {
-    public Rama() {
+    Map tm;
+
+    public Rama(Map tm) {
+        this.tm = tm;
         health = 3;
         x = 50;
-        y = 300;
+        y = 380;
         x_speed = 0;
         y_speed = 0;
         direction = KeyEvent.VK_RIGHT;
@@ -27,19 +32,34 @@ public class Rama extends Playable {
         }
     }
 
+    private void collidingPanel() {
+        if (x <= 5 && x_speed < 0) {
+            x_speed = 0;
+            x = 5;
+        }
+
+        if (x >= GamePanel.WIDTH - 50 && x_speed > 0) {
+            x_speed = 0;
+            x = GamePanel.WIDTH - 50;
+        }
+    }
+
+    private void collidingOutsidePath() {
+        if (x <= 200 || x >= 1240) {
+            y_speed = 0;
+            y = 385;
+        }
+    }
+
     @Override
     public void draw(Graphics g) {
         if (direction == KeyEvent.VK_RIGHT) {
-            // x_speed = 5;
-            g.drawImage(icon_left, x, y, null);
+            g.drawImage(icon_right, x, y, null);
         } else if (direction == KeyEvent.VK_LEFT) {
-            // x_speed = -5;
             g.drawImage(icon_left, x, y, null);
         } else if (direction == KeyEvent.VK_UP) {
-            // y_speed = -5;
             g.drawImage(icon_left, x, y, null);
         } else if (direction == KeyEvent.VK_DOWN) {
-            // y_speed = 5;
             g.drawImage(icon_right, x, y, null);
         }
     }
@@ -64,14 +84,26 @@ public class Rama extends Playable {
     }
 
     @Override
-    public void collide() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void update() {
         x += x_speed;
         y += y_speed;
+
+        collidingPanel();
+        collidingOutsidePath();
+
+        if (x_speed > 0) tm.collideRight(x, y, this);
+        if (x_speed < 0) tm.collideLeft(x, y, this);
+        if (y_speed > 0) tm.collideDown(x, y, this);
+        if (y_speed < 0) tm.collideUp(x, y, this);
+    }
+
+    @Override
+    public void set_x(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public void set_y(int y) {
+        this.y = y;
     }
 }
