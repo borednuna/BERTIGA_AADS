@@ -114,4 +114,10 @@ public class MenuState extends State {
 
         if (currentChoice == 4) System.exit(0);
     }
+
+    @Override
+    public void initMaze() {
+        // TODO Auto-generated method stub
+        
+    }
 }

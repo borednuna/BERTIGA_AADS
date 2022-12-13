@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Rama extends Playable {
     public Rama() {
         health = 3;
-        x = 300;
+        x = 50;
         y = 300;
         x_speed = 0;
         y_speed = 0;
