@@ -7,6 +7,9 @@ import Map.Map;
 import Entity.*;
 import Entity.Playable.Playable;
 import Entity.Playable.Rama;
+import Entity.Enemy.*;
+import Entity.Enemy.Ghost_Vertical;
+import Entity.Enemy.Ghost_Horizontal;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -17,6 +20,8 @@ public class TangkapkijangState extends State {
     private Background bg;
     private Map map = new Map(50);
     private Playable main_character;
+    private Enemy ghostver;
+    private Enemy ghosthor;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
@@ -37,11 +42,15 @@ public class TangkapkijangState extends State {
         this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
         this.map.setPosition(98, 30);
         main_character = new Rama(map);
+        ghostver = new Ghost_Vertical(400, 325, 100, main_character);
+        ghosthor = new Ghost_Horizontal(450, 385, 150, main_character);
     }
 
     @Override
     public void update() {
         main_character.update();
+        ghostver.update();
+        ghosthor.update();
     }
 
     @Override
@@ -49,6 +58,8 @@ public class TangkapkijangState extends State {
         bg.draw(g);
         map.draw(g);
         main_character.draw(g);
+        ghostver.draw(g);
+        ghosthor.draw(g);
     }
 
     @Override
