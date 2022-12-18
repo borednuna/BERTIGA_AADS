@@ -38,7 +38,7 @@ public class TangkapkijangState extends State {
         this.map.setPosition(98, 30);
         main_character = new Rama(map);
     }
-
+  
     @Override
     public void update() {
         main_character.update();
@@ -83,7 +83,7 @@ public class TangkapkijangState extends State {
         }
     }
 
-    @Override
+    @Override // kayanya g kepake
     public void initMaze() {
             
     }
