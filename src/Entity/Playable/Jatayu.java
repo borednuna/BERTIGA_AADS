@@ -57,7 +57,7 @@ public class Jatayu extends Playable{
             g.drawImage(icon_right, x, y, null);
         }else if (direction == KeyEvent.VK_LEFT){
             g.drawImage(icon_left, x, y, null);
-        }     else if (direction == KeyEvent.VK_KP_UP){
+        }else if (direction == KeyEvent.VK_KP_UP){
             g.drawImage(icon_left, x, y, null);
         }else if (direction == KeyEvent.VK_DOWN){
             g.drawImage(icon_right, x, y, null);
