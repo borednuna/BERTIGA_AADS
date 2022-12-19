@@ -38,7 +38,7 @@ public class StateManager {
         if (state == JATAYUSTATE) gameStates[state] = new JatayuState(this);
         if (state == HANUMANSTATE) gameStates[state] = new HanumanState(this);
         if (state == RAHWANASTATE) gameStates[state] = new RahwanaState(this);
-        // if (state == DEATHSTATE) gameStates[state] = new DeathState(this);
+        if (state == DEATHSTATE) gameStates[state] = new DeathState(this);
         if (state == STORYLINE2) gameStates[state] = new Storyline2(this);
         if (state == STORYLINE3) gameStates[state] = new Storyline3(this);
     }

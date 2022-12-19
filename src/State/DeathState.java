@@ -20,7 +20,7 @@ public class DeathState extends State{
         this.stateManager = stateManager;
 
         try{
-            bg = new Background("/Background/bg_DEATHSTATE");
+            bg = new Background("/Backgrounds/bg_DEATHSTATE.png");
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
             Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
 
