@@ -87,7 +87,10 @@ public class TangkapkijangState extends State {
         }
 
         if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
-        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE2);
+        if (main_character.getX() >= 1300) {
+            SaveData.writeHighScore(1, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
+            stateManager.setState(StateManager.STORYLINE2);
+        }
     }
 
     @Override
