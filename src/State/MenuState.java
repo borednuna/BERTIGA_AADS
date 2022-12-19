@@ -3,6 +3,7 @@ package State;
 import Main.GamePanel;
 import Utility.*;
 import Map.*;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,7 @@ import java.util.Objects;
 
 public class MenuState extends State {
     private Background bg;
+    private AudioPlayer music;
 
     private int currentChoice = 0;
     private String[] options = {
@@ -27,8 +29,9 @@ public class MenuState extends State {
 
     public MenuState(StateManager stateManager) {
         this.stateManager = stateManager;
-
+        
         try {
+            music = new AudioPlayer("/SFX/music_menustate.mp3");
             bg = new Background("/Backgrounds/main_menu.jpg");
 
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
@@ -45,6 +48,8 @@ public class MenuState extends State {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        music.play();
     }
 
     @Override
@@ -99,13 +104,10 @@ public class MenuState extends State {
             int latestCheckpoint = SaveData.readLatestLevel();
 
             if (latestCheckpoint == 1) currentCheckpoint = StateManager.OPENINGSTATE;
-            if (latestCheckpoint == 2) currentCheckpoint = StateManager.TANGKAP_KIJANG_STATE;
-            // if (latestCheckpoint == 3) currentCheckpoint = StateManager.JATAYUSTATE;
-            // if (latestCheckpoint == 4) currentCheckpoint = StateManager.HANUMANSTATE;
-            // if (latestCheckpoint == 5) currentCheckpoint = StateManager.RAHWANASTATE;
-            // if (latestCheckpoint == 6) currentCheckpoint = StateManager.DEATHSTATE;
+            if (latestCheckpoint == 2) currentCheckpoint = StateManager.STORYLINE2;
+            if (latestCheckpoint == 3) currentCheckpoint = StateManager.STORYLINE3;
 
-            // stateManager.setState(currentCheckpoint);
+            stateManager.setState(currentCheckpoint);
         }
 
         if (currentChoice == 2) stateManager.setState(StateManager.HIGHSCORESTATE);

@@ -14,6 +14,7 @@ import Entity.Enemy.Ghost_Vertical;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.HUD;
 import Utility.Time;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -32,6 +33,7 @@ public class TangkapkijangState extends State {
     private List <Collectibles> flowers;
     private Time t;
     private HUD hud;
+    AudioPlayer music;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
@@ -57,7 +59,9 @@ public class TangkapkijangState extends State {
         main_character = new Rama(map);
         t = new Time();
         hud = new HUD(main_character, t);
-        // 
+        music = new AudioPlayer("/SFX/music_labirin.mp3");
+        music.play();
+
         enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
         enemy.add(new Ghost_Horizontal(250, 175, 150, main_character, 3));
         enemy.add(new Ghost_Vertical(550, 475, 100, main_character, 2));
