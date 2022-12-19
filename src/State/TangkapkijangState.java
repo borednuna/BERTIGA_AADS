@@ -122,6 +122,8 @@ public class TangkapkijangState extends State {
             main_character.set_y_speed(5);
             main_character.set_x_speed(0);
             main_character.set_direction(k);
+        }else if (k == KeyEvent.VK_ESCAPE){
+            stateManager.setState(StateManager.MENUSTATE);
         }
     }
 
