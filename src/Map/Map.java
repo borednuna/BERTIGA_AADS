@@ -2,6 +2,7 @@ package Map;
 
 import Main.GamePanel;
 import Entity.Playable.*;
+import Entity.Enemy.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
+import java.util.Random;
 
 public class Map {
 	
@@ -173,6 +175,47 @@ public class Map {
             player.set_y(currentRow * tileSize + 30);
         }
     }
+
+	public int getRandomDirection() {
+		int min = 0;
+		int max = 4;
+		// 0 RIGHT
+		// 1 LEFT
+		// 2 UP
+		// 3 DOWN
+		return (int) ((Math.random() * (max - min)) + min);
+	}
+
+	public void collideEnemy(int positionX, int positionY, Enemy npc) {
+		currentColumn = (int)((positionX - 98) / tileSize);
+        currentRow = (int)((positionY - 30) / tileSize);
+
+		int randomDir = getRandomDirection();
+
+		if (
+			npc.getSpeedX() > 0 && map[currentRow + 1][currentColumn] == 0
+			|| npc.getSpeedX() < 0 && map[currentRow][currentColumn] == 0
+			|| npc.getSpeedY() > 0 && map[currentRow + 1][currentColumn] == 0
+			|| npc.getSpeedY() < 0 && map[currentRow][currentColumn] == 0
+		) {
+			npc.set_x(currentColumn * tileSize + 98);
+			npc.set_y(currentRow * tileSize + 30);
+
+			if (randomDir == 0) {
+				npc.set_x_speed(7);
+				npc.set_y_speed(0);
+			} else if (randomDir == 1) {
+				npc.set_x_speed(-7);
+				npc.set_y_speed(0);
+			} else if (randomDir == 2) {
+				npc.set_x_speed(0);
+				npc.set_y_speed(-7);
+			} else if (randomDir == 3) {
+				npc.set_x_speed(0);
+				npc.set_y_speed(7);
+			}
+		}
+	}
 	
 	public void draw(Graphics2D g) {
 		for(

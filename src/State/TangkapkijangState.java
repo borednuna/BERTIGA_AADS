@@ -5,21 +5,39 @@ import Utility.*;
 import Map.Background;
 import Map.Map;
 import Entity.*;
+import Entity.Collectibles.Collectibles;
+import Entity.Collectibles.Flower;
 import Entity.Playable.Playable;
 import Entity.Playable.Rama;
+import Entity.Enemy.*;
+import Entity.Enemy.Ghost_Vertical;
+import Entity.Enemy.Ghost_Horizontal;
+import Entity.HUD;
+import Utility.Time;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TangkapkijangState extends State {
     private Background bg;
     private Map map = new Map(50);
     private Playable main_character;
+    private List <Enemy> enemy;
+    private List <Collectibles> flowers;
+    private Time t;
+    private HUD hud;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
+        this.flowers = new ArrayList<Collectibles>();
+        this.enemy = new ArrayList<Enemy>();
+        // ghost_h.add(new Ghost_Horizontal(50, 380, 100, main_character));
         
         try {
             bg = new Background("/Backgrounds/bg_LABIRINTANGKAPKIJANG.png");
@@ -37,11 +55,37 @@ public class TangkapkijangState extends State {
         this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
         this.map.setPosition(98, 30);
         main_character = new Rama(map);
-    }
+        t = new Time();
+        hud = new HUD(main_character, t);
+        // 
+        enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
+        enemy.add(new Ghost_Horizontal(250, 175, 150, main_character, 3));
+        enemy.add(new Ghost_Vertical(550, 475, 100, main_character, 2));
+        enemy.add(new Ghost_Vertical(800, 275, 100, main_character, 4));
+        enemy.add(new Ghost_Horizontal(1000, 675, 200, main_character, 3));
+        enemy.add(new Ghost_Horizontal(1000, 75, 200, main_character, 7));
 
+        flowers.add(new Flower(main_character, 400, 690));
+        flowers.add(new Flower(main_character, 1000, 130));
+        flowers.add(new Flower(main_character, 650, 330));
+        flowers.add(new Flower(main_character, 350, 80));
+        flowers.add(new Flower(main_character, 800, 380));
+
+        t.start();
+    }
+  
     @Override
     public void update() {
         main_character.update();
+
+        for(Enemy ghost: enemy){
+            ghost.update();
+        }
+        for (Collectibles flower : flowers) {
+            flower.update();
+        }
+
+        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
     }
 
     @Override
@@ -49,6 +93,15 @@ public class TangkapkijangState extends State {
         bg.draw(g);
         map.draw(g);
         main_character.draw(g);
+
+        for(Enemy ghost: enemy){
+            ghost.draw(g);
+        }
+        for (Collectibles flower : flowers) {
+            flower.draw(g);
+        }
+        
+        hud.draw(g);
     }
 
     @Override
@@ -83,7 +136,7 @@ public class TangkapkijangState extends State {
         }
     }
 
-    @Override
+    @Override // kayanya g kepake
     public void initMaze() {
             
     }
