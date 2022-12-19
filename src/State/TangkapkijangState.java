@@ -15,16 +15,19 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TangkapkijangState extends State {
     private Background bg;
     private Map map = new Map(50);
     private Playable main_character;
-    private Enemy ghostver;
-    private Enemy ghosthor;
+    private List <Enemy> enemy;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
+        this.enemy = new ArrayList<Enemy>();
+        // ghost_h.add(new Ghost_Horizontal(50, 380, 100, main_character));
         
         try {
             bg = new Background("/Backgrounds/bg_LABIRINTANGKAPKIJANG.png");
@@ -42,15 +45,24 @@ public class TangkapkijangState extends State {
         this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
         this.map.setPosition(98, 30);
         main_character = new Rama(map);
-        ghostver = new Ghost_Vertical(400, 325, 100, main_character);
-        ghosthor = new Ghost_Horizontal(450, 385, 150, main_character);
+        // 
+        enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
+        enemy.add(new Ghost_Horizontal(300, 175, 100, main_character, 3));
+        enemy.add(new Ghost_Vertical(550, 475, 100, main_character, 2));
+        enemy.add(new Ghost_Vertical(800, 275, 100, main_character, 4));
+        enemy.add(new Ghost_Horizontal(1000, 675, 200, main_character, 3));
+        enemy.add(new Ghost_Horizontal(1000, 75, 200, main_character, 7));
     }
   
     @Override
     public void update() {
         main_character.update();
-        ghostver.update();
-        ghosthor.update();
+
+        for(Enemy ghost: enemy){
+            ghost.update();
+        }
+
+
     }
 
     @Override
@@ -58,8 +70,10 @@ public class TangkapkijangState extends State {
         bg.draw(g);
         map.draw(g);
         main_character.draw(g);
-        ghostver.draw(g);
-        ghosthor.draw(g);
+
+        for(Enemy ghost: enemy){
+            ghost.draw(g);
+        }
     }
 
     @Override
