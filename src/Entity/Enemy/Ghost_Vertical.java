@@ -15,14 +15,14 @@ import java.util.Objects;
 public class Ghost_Vertical extends Enemy {
     Playable mc;
 
-    public Ghost_Vertical(int x, int y, int range, Playable mc) {
+    public Ghost_Vertical(int x, int y, int range, Playable mc, int speedy) {
         this.mc = mc;
         this.x = x;
         this.y = y;
         initial_x = x;
         initial_y = y;
         x_speed = 0;
-        y_speed = 3;
+        this.y_speed = speedy;
         this.range = range;
 
         try {

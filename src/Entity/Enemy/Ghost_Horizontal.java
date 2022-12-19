@@ -15,13 +15,13 @@ import java.util.Objects;
 public class Ghost_Horizontal extends Enemy {
     Playable mc;
 
-    public Ghost_Horizontal(int x, int y, int range, Playable mc) {
+    public Ghost_Horizontal(int x, int y, int range, Playable mc,int speedx) {
         this.mc = mc;
         this.x = x;
         this.y = y;
         initial_x = x;
         initial_y = y;
-        x_speed = 3;
+        this.x_speed = speedx;
         y_speed = 0;
         this.range = range;
 
