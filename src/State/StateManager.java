@@ -8,7 +8,7 @@ public class StateManager {
     private int previousState;
     private int time;
 
-    public static final int GAMESTATES = 9;
+    public static final int GAMESTATES = 11;
     public static final int MENUSTATE = 0;
     public static final int ABOUTSTATE = 1;
     public static final int HIGHSCORESTATE = 2;
@@ -18,6 +18,8 @@ public class StateManager {
     public static final int HANUMANSTATE = 6;           // POV dr atas, kaya pacman
     public static final int RAHWANASTATE = 7;           // 
     public static final int DEATHSTATE = 8;
+    public static final int STORYLINE2 = 9;
+    public static final int STORYLINE3 = 10;
 
     public StateManager() {
         gameStates = new State[GAMESTATES];
@@ -33,10 +35,12 @@ public class StateManager {
         if (state == HIGHSCORESTATE) gameStates[state] = new HighscoreState(this);
         if (state == OPENINGSTATE) gameStates[state] = new OpeningState(this);
         if (state == TANGKAP_KIJANG_STATE) gameStates[state] = new TangkapkijangState(this);
-        // if (state == JATAYUSTATE) gameStates[state] = new JatayuState(this);
-        // if (state == HANUMANSTATE) gameStates[state] = new HanumanState(this);
-        // if (state == RAHWANASTATE) gameStates[state] = new RahwanaState(this);
+        if (state == JATAYUSTATE) gameStates[state] = new JatayuState(this);
+        if (state == HANUMANSTATE) gameStates[state] = new HanumanState(this);
+        if (state == RAHWANASTATE) gameStates[state] = new RahwanaState(this);
         // if (state == DEATHSTATE) gameStates[state] = new DeathState(this);
+        if (state == STORYLINE2) gameStates[state] = new Storyline2(this);
+        if (state == STORYLINE3) gameStates[state] = new Storyline3(this);
     }
 
     private void unloadState(int state) {
