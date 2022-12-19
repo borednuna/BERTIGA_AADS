@@ -16,7 +16,7 @@ public class OpeningState extends State {
         this.stateManager = stateManager;
 
         try {
-            bg = new Background("/Backgrounds/bg_about_state.png");
+            bg = new Background("/Backgrounds/Storyline_BG/1. CERITA_SATU.png");
 
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
             Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
