@@ -34,12 +34,12 @@ public class HUD {
         g.setColor(Color.BLACK);
 
         String score = "+Points: " + mc.getScore();
-        String timer = String.valueOf(t.getSecond()) + "secs";
+        String timer = String.valueOf(t.getSecond()) + ":" + String.valueOf(t.getMilisecond());
 
-        g.drawString(score, 16, 16);
-        g.drawString(timer, 180, 15);
+        g.drawString(score, 20, 50);
+        g.drawString(timer, 1300, 50);
         g.setColor(Color.WHITE);
-        g.drawString(score, 15, 15);
-        g.drawString(timer, 185, 16);
+        g.drawString(score, 15, 45);
+        g.drawString(timer, 1305, 45);
     }
 }

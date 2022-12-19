@@ -50,19 +50,15 @@ public class HighscoreState extends State {
 
         g.setFont(font);
 
-        String level1 = "Level 1: " + SaveData.readHighScore(SaveData.LEVEL1);
-        String level2 = "Level 2: " + SaveData.readHighScore(SaveData.LEVEL2);
-        String level3 = "Level 3: " + SaveData.readHighScore(SaveData.LEVEL3);
-        String level4 = "Level 4: " + SaveData.readHighScore(SaveData.LEVEL4);
-        String level5 = "Level 5: " + SaveData.readHighScore(SaveData.LEVEL5);
+        String level1 = "Level 1 Rama: " + SaveData.readHighScore(SaveData.LEVEL1) + "s";
+        String level2 = "Level 2 Jatayu: " + SaveData.readHighScore(SaveData.LEVEL2) + "s";
+        String level3 = "Level 3 Hanuman: " + SaveData.readHighScore(SaveData.LEVEL3) + "s";
 
         g.setColor(Color.BLACK);
 
         Utility.horizontalCenteredText(g, level1, GamePanel.WIDTH, 350, g.getFont(), Color.WHITE);
         Utility.horizontalCenteredText(g, level2, GamePanel.WIDTH, 400, g.getFont(), Color.WHITE);
         Utility.horizontalCenteredText(g, level3, GamePanel.WIDTH, 450, g.getFont(), Color.WHITE);
-        Utility.horizontalCenteredText(g, level4, GamePanel.WIDTH, 500, g.getFont(), Color.WHITE);
-        Utility.horizontalCenteredText(g, level5, GamePanel.WIDTH, 550, g.getFont(), Color.WHITE);
     }
     @Override
     public void keyPressed(int k) {

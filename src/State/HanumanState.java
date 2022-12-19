@@ -7,6 +7,8 @@ import Map.Map;
 import Entity.*;
 import Entity.Playable.Playable;
 import Entity.Playable.Hanuman;
+import Entity.HUD;
+import Utility.Time;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -22,6 +24,8 @@ public class HanumanState extends State {
     private Background bg;
     private Map map = new Map(50);
     private Playable main_character;
+    private Time t;
+    private HUD hud;
 
     public HanumanState(StateManager stateManager){
         this.stateManager = stateManager;
@@ -40,7 +44,9 @@ public class HanumanState extends State {
         this.map.loadTiles("/Tiles/tile_labirinhanuman.png");
         this.map.setPosition(98, 30);
         main_character =  new Hanuman (map);
-        
+        t = new Time();
+        hud = new HUD(main_character, t);
+        t.start();
     }
 
     @Override
@@ -54,6 +60,7 @@ public class HanumanState extends State {
         bg.draw(g);
         map.draw(g);
         main_character.draw(g);
+        hud.draw(g);
     }
 
     @Override
