@@ -15,6 +15,7 @@ public class Rama extends Playable {
     Map tm;
 
     public Rama(Map tm) {
+        this.score = 0;
         this.tm = tm;
         health = 3;
         x = 50;
@@ -45,7 +46,7 @@ public class Rama extends Playable {
     }
 
     private void collidingOutsidePath() {
-        if (x <= 200 || x >= 1240) {
+        if ((x <= 200 && x >= 1240) && (y >= 275 && y <= 475)) {
             y_speed = 0;
             y = 385;
         }

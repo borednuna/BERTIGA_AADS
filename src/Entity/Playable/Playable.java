@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Playable {
+    protected int score;
     protected int health;
     protected int x;
     protected int y;
@@ -29,5 +30,13 @@ public abstract class Playable {
 
     public int getY() {
         return this.y;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore(int score) {
+        this.score += score;
     }
 }
