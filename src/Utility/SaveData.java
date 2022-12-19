@@ -8,8 +8,6 @@ public class SaveData {
     public static int LEVEL1 = 1;
     public static int LEVEL2 = 2;
     public static int LEVEL3 = 3;
-    public static int LEVEL4 = 4;
-    public static int LEVEL5 = 5;
 
     public static String savePath = System.getProperty("user.dir") + "\\save.txt";
 
@@ -52,7 +50,7 @@ public class SaveData {
 
     public static int readLatestLevel() {
         try {
-            return Integer.parseInt(Files.readAllLines(new File(savePath).toPath()).get(7));
+            return Integer.parseInt(Files.readAllLines(new File(savePath).toPath()).get(5));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,7 +63,7 @@ public class SaveData {
     }
 
     public static void writeLatestLevel(int level) {
-        writeToLine(new File(savePath), String.valueOf(level), 7);
+        writeToLine(new File(savePath), String.valueOf(level), 5);
     }
 
     public static void writeToLine(File file, String text, int lineNumber) {
