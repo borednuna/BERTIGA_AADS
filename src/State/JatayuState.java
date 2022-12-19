@@ -7,6 +7,8 @@ import Map.Map;
 import Entity.*;
 import Entity.Playable.Playable;
 import Entity.Playable.Jatayu;
+import Entity.HUD;
+import Utility.Time;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -20,6 +22,8 @@ public class JatayuState extends State {
     private Background bg;
     private  Map map = new Map(50);
     private Playable main_character;
+    private Time t;
+    private HUD hud;
 
     public JatayuState(StateManager stateManager){
         this.stateManager  = stateManager;
@@ -38,7 +42,9 @@ public class JatayuState extends State {
         this.map.loadTiles("/Tiles/tile_labirinjatayu.png");
         this.map.setPosition(98, 30);
         main_character = new Jatayu (map);
-        
+        t = new Time();
+        hud = new HUD(main_character, t);
+        t.start();
     }
 
     @Override
@@ -52,6 +58,7 @@ public class JatayuState extends State {
         bg.draw(g);
         map.draw(g);
         main_character.draw(g);  
+        hud.draw(g);
     }
 
     @Override
