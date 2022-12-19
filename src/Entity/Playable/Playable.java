@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 public abstract class Playable {
     protected int score;
-    protected int health;
     protected int x;
     protected int y;
     protected int x_speed;
@@ -21,8 +20,15 @@ public abstract class Playable {
     public abstract void set_x(int x);
     public abstract void set_y(int y);
     public abstract void set_direction(int dir);
-    public abstract void reduceHealth();
     public abstract void update();
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void kill() {
+        dead = true;
+    }
 
     public int getX() {
         return this.x;

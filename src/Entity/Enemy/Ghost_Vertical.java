@@ -82,7 +82,7 @@ public class Ghost_Vertical extends Enemy {
 
     private void checkMC() {
         if ((int)((mc.getX() - 98) / 50) == (int)((x - 98) / 50) && (int)((mc.getY() - 98) / 50) == (int)((y - 98) / 50)) {
-            mc.reduceHealth();
+            mc.kill();
         }
     }
 

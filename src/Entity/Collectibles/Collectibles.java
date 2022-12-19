@@ -16,7 +16,7 @@ public abstract class Collectibles {
     public abstract void update();
 
     public boolean isCatch(Playable mc) {
-        if ((int)((mc.getX() - 98) / 50) == (int)((x - 98) / 50)) return true;
+        if ((int)((mc.getX() - 98) / 50) == (int)((x - 98) / 50) && (int)((mc.getY() - 30) / 50) == (int)((y - 30) / 50)) return true;
         return false;
     }
 

@@ -17,7 +17,6 @@ public class Rama extends Playable {
     public Rama(Map tm) {
         this.score = 0;
         this.tm = tm;
-        health = 3;
         x = 50;
         y = 380;
         x_speed = 0;
@@ -76,12 +75,6 @@ public class Rama extends Playable {
     }
     public void set_direction(int dir) {
         this.direction = dir;
-    }
-
-    @Override
-    public void reduceHealth() {
-        this.health -= 1;
-        if (health <= 0) dead = true;
     }
 
     @Override
