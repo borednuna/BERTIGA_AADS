@@ -5,6 +5,8 @@ import Utility.*;
 import Map.Background;
 import Map.Map;
 import Entity.*;
+import Entity.Collectibles.Collectibles;
+import Entity.Collectibles.Flower;
 import Entity.Playable.Playable;
 import Entity.Playable.Rama;
 import Entity.Enemy.*;
@@ -17,15 +19,19 @@ import java.io.File;
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TangkapkijangState extends State {
     private Background bg;
     private Map map = new Map(50);
     private Playable main_character;
     private List <Enemy> enemy;
+    private List <Collectibles> flowers;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
+        this.flowers = new ArrayList<Collectibles>();
         this.enemy = new ArrayList<Enemy>();
         // ghost_h.add(new Ghost_Horizontal(50, 380, 100, main_character));
         
@@ -52,6 +58,7 @@ public class TangkapkijangState extends State {
         enemy.add(new Ghost_Vertical(800, 275, 100, main_character, 4));
         enemy.add(new Ghost_Horizontal(1000, 675, 200, main_character, 3));
         enemy.add(new Ghost_Horizontal(1000, 75, 200, main_character, 7));
+        flowers.add(new Flower(main_character, 400, 690));
     }
   
     @Override
@@ -60,6 +67,10 @@ public class TangkapkijangState extends State {
 
         for(Enemy ghost: enemy){
             ghost.update();
+
+        for (Collectibles flower : flowers) {
+            flower.update();
+        }
         }
 
 
@@ -73,6 +84,10 @@ public class TangkapkijangState extends State {
 
         for(Enemy ghost: enemy){
             ghost.draw(g);
+
+        for (Collectibles flower : flowers) {
+            flower.draw(g);
+        }
         }
     }
 
