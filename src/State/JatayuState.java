@@ -29,7 +29,7 @@ public class JatayuState extends State {
         this.stateManager  = stateManager;
 
         try{
-            bg = new Background("/Background/bg_LABIRINJATAYU.png");
+            bg = new Background("/Backgrounds/bg_LABIRINJATAYU.png");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class JatayuState extends State {
         this.map.loadMap("/Map/labirinjatayu.map");
         this.map.loadTiles("/Tiles/tile_labirinjatayu.png");
         this.map.setPosition(98, 30);
-        main_character = new Jatayu (map);
+        main_character = new Jatayu(map);
         t = new Time();
         hud = new HUD(main_character, t);
         t.start();

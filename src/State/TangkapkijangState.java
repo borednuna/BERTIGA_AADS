@@ -70,6 +70,7 @@ public class TangkapkijangState extends State {
         flowers.add(new Flower(main_character, 650, 330));
         flowers.add(new Flower(main_character, 350, 80));
         flowers.add(new Flower(main_character, 800, 380));
+        flowers.add(new Flower(main_character, 1000, 680));
 
         t.start();
     }
@@ -86,6 +87,7 @@ public class TangkapkijangState extends State {
         }
 
         if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
+        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE2);
     }
 
     @Override
