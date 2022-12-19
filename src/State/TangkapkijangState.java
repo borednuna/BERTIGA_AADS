@@ -70,6 +70,7 @@ public class TangkapkijangState extends State {
         flowers.add(new Flower(main_character, 650, 330));
         flowers.add(new Flower(main_character, 350, 80));
         flowers.add(new Flower(main_character, 800, 380));
+        flowers.add(new Flower(main_character, 1000, 680));
 
         t.start();
     }
