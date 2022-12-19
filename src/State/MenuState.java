@@ -31,7 +31,7 @@ public class MenuState extends State {
         this.stateManager = stateManager;
         
         try {
-            music = new AudioPlayer("/SFX/music_menustate.mp3");
+            music = new AudioPlayer("/SFX/music_menustate.wav");
             bg = new Background("/Backgrounds/main_menu.jpg");
 
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
@@ -81,6 +81,7 @@ public class MenuState extends State {
     @Override
     public void keyPressed(int k) {
         if (k == KeyEvent.VK_ENTER) {
+            music.stop();
             select();
         }
 

@@ -59,7 +59,7 @@ public class TangkapkijangState extends State {
         main_character = new Rama(map);
         t = new Time();
         hud = new HUD(main_character, t);
-        music = new AudioPlayer("/SFX/music_labirin.mp3");
+        music = new AudioPlayer("/SFX/music_labirin.wav");
         music.play();
 
         enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
@@ -91,10 +91,12 @@ public class TangkapkijangState extends State {
         }
 
         if (main_character.isDead()) {
+            music.stop();
             SaveData.writeLatestLevel(1);
             stateManager.setState(StateManager.DEATHSTATE);
         }
         if (main_character.getX() >= 1300) {
+            music.stop();
             SaveData.writeHighScore(1, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
             stateManager.setState(StateManager.STORYLINE2);
         }

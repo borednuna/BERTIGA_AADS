@@ -3,6 +3,7 @@ package State;
 import Main.GamePanel;
 import Utility.*;
 import Map.Background;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,9 +12,12 @@ import java.util.Objects;
 
 public class OpeningState extends State {
     private Background bg;
+    private AudioPlayer music;
 
     public OpeningState(StateManager stateManager) {
         this.stateManager = stateManager;
+        music = new AudioPlayer("/SFX/music_menustate.wav");
+        music.play();
 
         try {
             bg = new Background("/Backgrounds/Storyline_BG/1. CERITA_SATU.png");
@@ -43,7 +47,10 @@ public class OpeningState extends State {
 
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.TANGKAP_KIJANG_STATE);
+        if (k == KeyEvent.VK_ENTER) {
+            music.stop();
+            stateManager.setState(StateManager.TANGKAP_KIJANG_STATE);
+        }
     }
 
     @Override

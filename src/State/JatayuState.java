@@ -9,6 +9,7 @@ import Entity.Playable.Playable;
 import Entity.Playable.Jatayu;
 import Entity.HUD;
 import Utility.Time;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -24,9 +25,11 @@ public class JatayuState extends State {
     private Playable main_character;
     private Time t;
     private HUD hud;
+    private AudioPlayer music;
 
     public JatayuState(StateManager stateManager){
         this.stateManager  = stateManager;
+        music = new AudioPlayer("/SFX/music_labirin.wav");
 
         try{
             bg = new Background("/Backgrounds/bg_LABIRINJATAYU.png");
@@ -45,6 +48,7 @@ public class JatayuState extends State {
         t = new Time();
         hud = new HUD(main_character, t);
         t.start();
+        music.play();
     }
 
     @Override
