@@ -63,21 +63,21 @@ public class JatayuState extends State {
 
     @Override
     public void keyPressed(int k) {
-        if(k == KeyEvent.VK_RIGHT){
+        if (k == KeyEvent.VK_RIGHT) {
             main_character.set_x_speed(5);
             main_character.set_y_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_LEFT){
+        } else if (k == KeyEvent.VK_LEFT) {
             main_character.set_x_speed(-5);
             main_character.set_y_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_UP){
-            main_character.set_x_speed(-5);
-            main_character.set_y_speed(0);
+        } else if (k == KeyEvent.VK_UP) {
+            main_character.set_y_speed(-5);
+            main_character.set_x_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_DOWN){
-            main_character.set_x_speed(5);
-            main_character.set_y_speed(0);
+        } else if (k == KeyEvent.VK_DOWN) {
+            main_character.set_y_speed(5);
+            main_character.set_x_speed(0);
             main_character.set_direction(k);
         }
         
