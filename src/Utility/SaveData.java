@@ -19,7 +19,7 @@ public class SaveData {
         if (!isFileExist(fs)) {
             try {
                 fs.createNewFile();
-                writeToFile(fs, "HighScore\n0\n0\n0\n0\n0\nLatestLevel\n0");
+                writeToFile(fs, "HighScore\n0\n0\n0\nLatestLevel\n0");
             } catch (IOException e) {
                 e.printStackTrace();
             }

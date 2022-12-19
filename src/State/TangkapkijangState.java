@@ -12,6 +12,8 @@ import Entity.Playable.Rama;
 import Entity.Enemy.*;
 import Entity.Enemy.Ghost_Vertical;
 import Entity.Enemy.Ghost_Horizontal;
+import Entity.HUD;
+import Utility.Time;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -28,6 +30,8 @@ public class TangkapkijangState extends State {
     private Playable main_character;
     private List <Enemy> enemy;
     private List <Collectibles> flowers;
+    private Time t;
+    private HUD hud;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
@@ -51,14 +55,23 @@ public class TangkapkijangState extends State {
         this.map.loadTiles("/Tiles/tile_tangkapkijang.png");
         this.map.setPosition(98, 30);
         main_character = new Rama(map);
+        t = new Time();
+        hud = new HUD(main_character, t);
         // 
         enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
-        enemy.add(new Ghost_Horizontal(300, 175, 100, main_character, 3));
+        enemy.add(new Ghost_Horizontal(250, 175, 150, main_character, 3));
         enemy.add(new Ghost_Vertical(550, 475, 100, main_character, 2));
         enemy.add(new Ghost_Vertical(800, 275, 100, main_character, 4));
         enemy.add(new Ghost_Horizontal(1000, 675, 200, main_character, 3));
         enemy.add(new Ghost_Horizontal(1000, 75, 200, main_character, 7));
+
         flowers.add(new Flower(main_character, 400, 690));
+        flowers.add(new Flower(main_character, 1000, 130));
+        flowers.add(new Flower(main_character, 650, 330));
+        flowers.add(new Flower(main_character, 350, 80));
+        flowers.add(new Flower(main_character, 800, 380));
+
+        t.start();
     }
   
     @Override
@@ -67,13 +80,12 @@ public class TangkapkijangState extends State {
 
         for(Enemy ghost: enemy){
             ghost.update();
-
+        }
         for (Collectibles flower : flowers) {
             flower.update();
         }
-        }
 
-
+        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
     }
 
     @Override
@@ -84,11 +96,12 @@ public class TangkapkijangState extends State {
 
         for(Enemy ghost: enemy){
             ghost.draw(g);
-
+        }
         for (Collectibles flower : flowers) {
             flower.draw(g);
         }
-        }
+        
+        hud.draw(g);
     }
 
     @Override

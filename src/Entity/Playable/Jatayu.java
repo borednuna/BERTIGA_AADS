@@ -18,7 +18,6 @@ public class Jatayu extends Playable{
 
     public Jatayu (Map tm){
         this.tm = tm;
-        health = 3;
         x = 50;
         y = 380;
         x_speed = 0;
@@ -92,13 +91,6 @@ public class Jatayu extends Playable{
     @Override
     public void set_direction(int dir) {
         this.direction = dir;
-        
-    }
-
-    @Override
-    public void reduceHealth() {
-        this.health -= 1;
-        if(health <= 0) dead = true;
         
     }
 
