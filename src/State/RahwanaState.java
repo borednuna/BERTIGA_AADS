@@ -17,7 +17,7 @@ public class RahwanaState extends State{
 
         try{
             slide1 = new Background("/Backgrounds/Storyline_BG/4. CERITA_EMPAT.png");
-            slide2 = new Background("/Bckgrounds/Storyline_BG/5. CERITA_LIMA.png");
+            slide2 = new Background("/Backgrounds/Storyline_BG/5. CERITA_LIMA.png");
             // bg.add("/Backgrounds/Storyline_BG/1. CERITA_SATU.png");
         } catch(Exception e) {
             e.printStackTrace();

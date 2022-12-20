@@ -22,13 +22,11 @@ public class DeathState extends State{
         try{
             bg = new Background("/Backgrounds/bg_DEATHSTATE.png");
             Font ManilaCity = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/ManilaCity.ttf")).getPath()));
-            Font AccidentalPrecidency = Font.createFont(Font.TRUETYPE_FONT, new File(Objects.requireNonNull(getClass().getResource("/Fonts/AccidentalPrecidency.ttf").getPath())));
 
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(ManilaCity);
-            ge.registerFont(AccidentalPrecidency);
 
-            font = AccidentalPrecidency.deriveFont(50f);
+            font = ManilaCity.deriveFont(50f);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -52,14 +50,14 @@ public class DeathState extends State{
         g.setFont(font);
         g.setColor(Color.WHITE);
 
-        String str = "Try Again <3";
-        Utility.centeredText(g, str, 0, 0, font, null);
+        String str = "Try Again :(";
+        Utility.centeredText(g, str, GamePanel.WIDTH, GamePanel.HEIGHT, font, Color.WHITE);
         
     }
 
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.DEATHSTATE);
+        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.MENUSTATE);
         
     }
 
