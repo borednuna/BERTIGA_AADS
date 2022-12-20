@@ -14,6 +14,7 @@ import Entity.Enemy.Ghost_Vertical;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.HUD;
 import Utility.Time;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -33,6 +34,7 @@ public class HanumanState extends State {
     private Playable main_character;
     private List <Enemy> enemy;
     private List <Collectibles> flowers;
+    private AudioPlayer music;
 
     private Time t;
     private HUD hud;
@@ -41,6 +43,7 @@ public class HanumanState extends State {
         this.stateManager = stateManager;
         this.flowers = new ArrayList<Collectibles>();
         this.enemy = new ArrayList<Enemy>();
+        music = new AudioPlayer("/SFX/music_labirin.wav");
 
         try{
             bg = new Background("/Backgrounds/bg_LABIRINHANUMAN.png");
@@ -58,6 +61,7 @@ public class HanumanState extends State {
         main_character =  new Hanuman (map);
         t = new Time();
         hud = new HUD(main_character, t);
+        music.play();
 
         enemy.add(new Ghost_Horizontal(150, 675, 350, main_character, 2));
         enemy.add(new Ghost_Horizontal(150, 200, 200, main_character, 3));
@@ -101,10 +105,12 @@ public class HanumanState extends State {
         }
 
         if (main_character.isDead()) {
+            music.stop();
             SaveData.writeLatestLevel(3);
             stateManager.setState(StateManager.DEATHSTATE);
         }
         if (main_character.getX() >= 1300) {
+            music.stop();
             SaveData.writeHighScore(3, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
             stateManager.setState(StateManager.RAHWANASTATE);
         }
@@ -146,6 +152,7 @@ public class HanumanState extends State {
             main_character.set_y_speed(5);
             main_character.set_direction(k);
         } else if (k == KeyEvent.VK_ESCAPE) {
+            music.stop();
             SaveData.writeLatestLevel(3);
             stateManager.setState(StateManager.MENUSTATE);
         }

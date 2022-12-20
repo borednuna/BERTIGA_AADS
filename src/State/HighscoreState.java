@@ -2,6 +2,7 @@ package State;
 
 import Main.GamePanel;
 import Map.Background;
+import Audio.AudioPlayer;
 import Utility.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,9 +14,11 @@ public class HighscoreState extends State {
     private Color titleColor;
     private Font titleFont;
     private Font font;
+    private AudioPlayer fx;
 
     public HighscoreState(StateManager stateManager) {
         this.stateManager = stateManager;
+        fx = new AudioPlayer("/SFX/music_labirin.wav");
 
         try {
             bg = new Background("/Backgrounds/bg_highscore_state.png");
@@ -62,7 +65,10 @@ public class HighscoreState extends State {
     }
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.MENUSTATE);
+        if (k == KeyEvent.VK_ENTER) {
+            fx.stop();
+            stateManager.setState(StateManager.MENUSTATE);
+        }
     }
     @Override
     public void keyReleased(int k) {}

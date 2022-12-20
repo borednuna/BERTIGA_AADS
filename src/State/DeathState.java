@@ -3,6 +3,7 @@ package State;
 import Main.GamePanel;
 import Utility.*;
 import Map.Background;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,12 @@ import Utility.Utility;
 public class DeathState extends State{
     private Background bg;
     private Font font;
+    private AudioPlayer fx;
 
     public DeathState (StateManager stateManager){
         this.stateManager = stateManager;
+        fx = new AudioPlayer("/SFX/fx_lost.wav");
+        fx.play();
 
         try{
             bg = new Background("/Backgrounds/bg_DEATHSTATE.png");

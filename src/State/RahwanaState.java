@@ -6,14 +6,15 @@ import java.util.List;
 import java.awt.event.KeyEvent;
 
 import Map.Background;
+import Audio.AudioPlayer;
 
 public class RahwanaState extends State{
-    private List <Background> bg;
-    Background slide1, slide2, display;
+    private AudioPlayer music;
+    private Background slide1, slide2, display;
 
     public RahwanaState (StateManager stateManager){
         this.stateManager = stateManager;
-        this.bg = new ArrayList<Background>();
+        music = new AudioPlayer("/SFX/music_rahwanastate.wav");
 
         try{
             slide1 = new Background("/Backgrounds/Storyline_BG/4. CERITA_EMPAT.png");
