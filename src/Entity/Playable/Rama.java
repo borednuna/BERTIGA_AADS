@@ -25,8 +25,8 @@ public class Rama extends Playable {
         dead = false;
 
         try {
-            icon_left = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Entity/Playable/ShintaKiri.png")));
-            icon_right = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Entity/Playable/ShintaKiri.png")));
+            icon_left = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Entity/Playable/Rama.png")));
+            icon_right = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Entity/Playable/Rama.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
