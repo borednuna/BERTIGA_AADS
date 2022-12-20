@@ -8,6 +8,9 @@ import Entity.*;
 import Entity.Playable.Playable;
 import Entity.Playable.Jatayu;
 import Entity.HUD;
+import Entity.Enemy.Enemy;
+import Entity.Enemy.Ghost_Horizontal;
+import Entity.Enemy.Ghost_Vertical;
 import Utility.Time;
 import Audio.AudioPlayer;
 
@@ -17,12 +20,15 @@ import java.io.File;
 import java.util.Objects;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class JatayuState extends State {
     private Background bg;
     private  Map map = new Map(50);
     private Playable main_character;
+    private List <Enemy> enemy;
     private Time t;
     private HUD hud;
     private AudioPlayer music;
@@ -30,6 +36,7 @@ public class JatayuState extends State {
     public JatayuState(StateManager stateManager){
         this.stateManager  = stateManager;
         music = new AudioPlayer("/SFX/music_labirin.wav");
+        enemy = new ArrayList<Enemy>();
 
         try{
             bg = new Background("/Backgrounds/bg_LABIRINJATAYU.png");
@@ -47,6 +54,15 @@ public class JatayuState extends State {
         main_character = new Jatayu(map);
         t = new Time();
         hud = new HUD(main_character, t);
+
+        enemy.add(new Ghost_Horizontal(450, 75, 200, main_character, 2));
+        enemy.add(new Ghost_Vertical(450, 525, 150, main_character, 5));
+        enemy.add(new Ghost_Vertical(900, 75, 150, main_character, 5));
+        enemy.add(new Ghost_Vertical(800, 315, 100, main_character, 2));
+        enemy.add(new Ghost_Vertical(1100, 450, 100, main_character, 5));
+        enemy.add(new Ghost_Horizontal(150, 75, 150, main_character, 3));
+
+
         t.start();
         music.play();
     }
@@ -55,34 +71,48 @@ public class JatayuState extends State {
     public void update() {
         main_character.update();
         
+        for(Enemy rahwana : enemy){
+            rahwana.update();
+        }
+
+        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
+        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE3);
+        
     }
 
     @Override
     public void draw(Graphics2D g) {
         bg.draw(g);
         map.draw(g);
-        main_character.draw(g);  
+        main_character.draw(g); 
+        
+        for(Enemy rahwana: enemy){
+            rahwana.draw(g);
+        }
+
         hud.draw(g);
     }
 
     @Override
     public void keyPressed(int k) {
-        if(k == KeyEvent.VK_RIGHT){
+        if (k == KeyEvent.VK_RIGHT) {
             main_character.set_x_speed(5);
             main_character.set_y_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_LEFT){
+        } else if (k == KeyEvent.VK_LEFT) {
             main_character.set_x_speed(-5);
             main_character.set_y_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_UP){
-            main_character.set_x_speed(-5);
-            main_character.set_y_speed(0);
+        } else if (k == KeyEvent.VK_UP) {
+            main_character.set_y_speed(-5);
+            main_character.set_x_speed(0);
             main_character.set_direction(k);
-        }else if(k == KeyEvent.VK_DOWN){
-            main_character.set_x_speed(5);
-            main_character.set_y_speed(0);
+        } else if (k == KeyEvent.VK_DOWN) {
+            main_character.set_y_speed(5);
+            main_character.set_x_speed(0);
             main_character.set_direction(k);
+        }else if (k == KeyEvent.VK_ESCAPE){
+            stateManager.setState(StateManager.MENUSTATE);
         }
         
     }
