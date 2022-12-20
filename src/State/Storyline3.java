@@ -3,12 +3,16 @@ package State;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import Map.Background;
+import Audio.AudioPlayer;
 
 public class Storyline3 extends State{
     private Background bg;
+    private AudioPlayer music;
 
     public Storyline3 (StateManager stateManager){
         this.stateManager = stateManager;
+        music = new AudioPlayer("/SFX/music_storyline.wav");
+        music.play();
 
         try{
             bg = new Background("/Backgrounds/Storyline_BG/3. CERITA_TIGA.png");
@@ -37,7 +41,10 @@ public class Storyline3 extends State{
 
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.HANUMANSTATE);
+        if (k == KeyEvent.VK_ENTER) {
+            music.stop();
+            stateManager.setState(StateManager.HANUMANSTATE);
+        }
         
     }
 

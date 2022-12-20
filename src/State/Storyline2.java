@@ -11,7 +11,7 @@ public class Storyline2 extends State{
 
     public Storyline2 (StateManager stateManager){
         this.stateManager = stateManager;
-        music = new AudioPlayer("/SFX/music_menustate.wav");
+        music = new AudioPlayer("/SFX/music_storyline.wav");
         music.play();
 
         try{
