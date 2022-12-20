@@ -39,7 +39,6 @@ public class TangkapkijangState extends State {
         this.stateManager = stateManager;
         this.flowers = new ArrayList<Collectibles>();
         this.enemy = new ArrayList<Enemy>();
-        // ghost_h.add(new Ghost_Horizontal(50, 380, 100, main_character));
         
         try {
             bg = new Background("/Backgrounds/bg_LABIRINTANGKAPKIJANG.png");
@@ -137,6 +136,8 @@ public class TangkapkijangState extends State {
             main_character.set_x_speed(0);
             main_character.set_direction(k);
         }else if (k == KeyEvent.VK_ESCAPE){
+            SaveData.writeLatestLevel(1);
+            music.stop();
             stateManager.setState(StateManager.MENUSTATE);
         }
     }

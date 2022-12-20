@@ -75,8 +75,16 @@ public class JatayuState extends State {
             rahwana.update();
         }
 
-        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
-        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE3);
+        if (main_character.isDead()) {
+            music.stop();
+            SaveData.writeLatestLevel(2);
+            stateManager.setState(StateManager.DEATHSTATE);
+        }
+        if (main_character.getX() >= 1300) {
+            music.stop();
+            SaveData.writeHighScore(2, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
+            stateManager.setState(StateManager.STORYLINE3);
+        }
         
     }
 
@@ -112,6 +120,8 @@ public class JatayuState extends State {
             main_character.set_x_speed(0);
             main_character.set_direction(k);
         }else if (k == KeyEvent.VK_ESCAPE){
+            music.stop();
+            SaveData.writeLatestLevel(2);
             stateManager.setState(StateManager.MENUSTATE);
         }
         
