@@ -1,8 +1,8 @@
 HighScore
+16.10
+59.17
+31.82
 0
-0
-0
-0
-0
+3
 LatestLevel
 0

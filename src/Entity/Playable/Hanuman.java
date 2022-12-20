@@ -46,7 +46,7 @@ public class Hanuman extends Playable{
     }
 
     private void collidingOutsidePath(){
-        if (x <= 200 || x >= 1240){
+        if (x <= 200 && x >= 1240 && y >= 275 && y <= 475){
             y_speed = 0;
             y = 385;
         }

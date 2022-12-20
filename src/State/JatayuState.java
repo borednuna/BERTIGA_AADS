@@ -12,14 +12,14 @@ import Entity.Enemy.Enemy;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.Enemy.Ghost_Vertical;
 import Utility.Time;
+import Entity.Collectibles.Collectibles;
+import Entity.Collectibles.Flower;
 import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
-
-import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +29,8 @@ public class JatayuState extends State {
     private  Map map = new Map(50);
     private Playable main_character;
     private List <Enemy> enemy;
+    private List <Collectibles> flowers;
+
     private Time t;
     private HUD hud;
     private AudioPlayer music;
@@ -37,6 +39,8 @@ public class JatayuState extends State {
         this.stateManager  = stateManager;
         music = new AudioPlayer("/SFX/music_labirin.wav");
         enemy = new ArrayList<Enemy>();
+        this.flowers = new ArrayList<Collectibles>();
+        this.flowers = new ArrayList<Collectibles>();
 
         try{
             bg = new Background("/Backgrounds/bg_LABIRINJATAYU.png");
@@ -63,6 +67,13 @@ public class JatayuState extends State {
         enemy.add(new Ghost_Horizontal(150, 75, 150, main_character, 3));
 
 
+        flowers.add(new Flower(main_character, 550, 690));
+        flowers.add(new Flower(main_character, 1000, 130));
+        flowers.add(new Flower(main_character, 650, 330));
+        flowers.add(new Flower(main_character, 350, 80));
+        flowers.add(new Flower(main_character, 900, 380));
+        flowers.add(new Flower(main_character, 1000, 680));
+
         t.start();
         music.play();
     }
@@ -73,6 +84,10 @@ public class JatayuState extends State {
         
         for(Enemy rahwana : enemy){
             rahwana.update();
+        }
+
+        for (Collectibles flower : flowers) {
+            flower.update();
         }
 
         if (main_character.isDead()) {
@@ -96,6 +111,9 @@ public class JatayuState extends State {
         
         for(Enemy rahwana: enemy){
             rahwana.draw(g);
+        }
+        for (Collectibles flower : flowers) {
+            flower.draw(g);
         }
 
         hud.draw(g);
