@@ -3,6 +3,7 @@ package State;
 import Main.GamePanel;
 import Utility.*;
 import Map.Background;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,9 +13,11 @@ import java.util.Objects;
 public class AboutState extends State {
     private Background bg;
     private Font font;
+    private AudioPlayer music;
 
     public AboutState(StateManager stateManager) {
         this.stateManager = stateManager;
+        music = new AudioPlayer("/SFX/music_menustate.wav");
 
         try {
             bg = new Background("/Backgrounds/bg_about_state.png");
@@ -59,7 +62,11 @@ public class AboutState extends State {
 
     @Override
     public void keyPressed(int k) {
-        if (k == KeyEvent.VK_ENTER) stateManager.setState(StateManager.MENUSTATE);
+        
+        if (k == KeyEvent.VK_ENTER) {
+            music.stop();
+            stateManager.setState(StateManager.MENUSTATE);
+        }
         
     }
 

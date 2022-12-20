@@ -8,12 +8,14 @@ import javax.imageio.ImageIO;
 import Main.GamePanel;
 import Map.Map;
 import Entity.Playable.*;
+import Audio.AudioPlayer;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class Ghost_Vertical extends Enemy {
     Playable mc;
+    AudioPlayer fx;
 
     public Ghost_Vertical(int x, int y, int range, Playable mc, int speedy) {
         this.mc = mc;
@@ -24,6 +26,7 @@ public class Ghost_Vertical extends Enemy {
         x_speed = 0;
         this.y_speed = speedy;
         this.range = range;
+        fx = new AudioPlayer("/SFX/fx_lost.wav");
 
         try {
             icon_left = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Entity/Enemy/ghost.png")));
@@ -82,6 +85,7 @@ public class Ghost_Vertical extends Enemy {
 
     private void checkMC() {
         if ((int)((mc.getX() - 98) / 50) == (int)((x - 98) / 50) && (int)((mc.getY() - 98) / 50) == (int)((y - 98) / 50)) {
+            fx.play();
             mc.kill();
         }
     }
