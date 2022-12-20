@@ -42,7 +42,7 @@ public class Flower extends Collectibles {
     public void update() {
         if (!collected) {
             if (isCatch(mc)) {
-                mc.addScore(100);
+                mc.addScore(5);
                 dispose();
                 collected = true;
             }

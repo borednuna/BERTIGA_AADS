@@ -14,6 +14,7 @@ import Entity.Enemy.Ghost_Vertical;
 import Utility.Time;
 import Entity.Collectibles.Collectibles;
 import Entity.Collectibles.Flower;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -32,10 +33,11 @@ public class JatayuState extends State {
 
     private Time t;
     private HUD hud;
-    
+    private AudioPlayer music;
 
     public JatayuState(StateManager stateManager){
         this.stateManager  = stateManager;
+        music = new AudioPlayer("/SFX/music_labirin.wav");
         enemy = new ArrayList<Enemy>();
         this.flowers = new ArrayList<Collectibles>();
         this.flowers = new ArrayList<Collectibles>();
@@ -73,6 +75,7 @@ public class JatayuState extends State {
         flowers.add(new Flower(main_character, 1000, 680));
 
         t.start();
+        music.play();
     }
 
     @Override
@@ -87,8 +90,16 @@ public class JatayuState extends State {
             flower.update();
         }
 
-        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
-        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE3);
+        if (main_character.isDead()) {
+            music.stop();
+            SaveData.writeLatestLevel(2);
+            stateManager.setState(StateManager.DEATHSTATE);
+        }
+        if (main_character.getX() >= 1300) {
+            music.stop();
+            SaveData.writeHighScore(2, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
+            stateManager.setState(StateManager.STORYLINE3);
+        }
         
     }
 
@@ -127,6 +138,8 @@ public class JatayuState extends State {
             main_character.set_x_speed(0);
             main_character.set_direction(k);
         }else if (k == KeyEvent.VK_ESCAPE){
+            music.stop();
+            SaveData.writeLatestLevel(2);
             stateManager.setState(StateManager.MENUSTATE);
         }
         

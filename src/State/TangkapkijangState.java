@@ -14,6 +14,7 @@ import Entity.Enemy.Ghost_Vertical;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.HUD;
 import Utility.Time;
+import Audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -32,12 +33,12 @@ public class TangkapkijangState extends State {
     private List <Collectibles> flowers;
     private Time t;
     private HUD hud;
+    AudioPlayer music;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
         this.flowers = new ArrayList<Collectibles>();
         this.enemy = new ArrayList<Enemy>();
-        // ghost_h.add(new Ghost_Horizontal(50, 380, 100, main_character));
         
         try {
             bg = new Background("/Backgrounds/bg_LABIRINTANGKAPKIJANG.png");
@@ -57,7 +58,9 @@ public class TangkapkijangState extends State {
         main_character = new Rama(map);
         t = new Time();
         hud = new HUD(main_character, t);
-        // 
+        music = new AudioPlayer("/SFX/music_labirin.wav");
+        music.play();
+
         enemy.add(new Ghost_Horizontal(150, 675, 300, main_character, 2));
         enemy.add(new Ghost_Horizontal(250, 175, 150, main_character, 3));
         enemy.add(new Ghost_Vertical(550, 475, 100, main_character, 2));
@@ -86,8 +89,16 @@ public class TangkapkijangState extends State {
             flower.update();
         }
 
-        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
-        if (main_character.getX() >= 1300) stateManager.setState(StateManager.STORYLINE2);
+        if (main_character.isDead()) {
+            music.stop();
+            SaveData.writeLatestLevel(1);
+            stateManager.setState(StateManager.DEATHSTATE);
+        }
+        if (main_character.getX() >= 1300) {
+            music.stop();
+            SaveData.writeHighScore(1, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
+            stateManager.setState(StateManager.STORYLINE2);
+        }
     }
 
     @Override
@@ -125,6 +136,8 @@ public class TangkapkijangState extends State {
             main_character.set_x_speed(0);
             main_character.set_direction(k);
         }else if (k == KeyEvent.VK_ESCAPE){
+            SaveData.writeLatestLevel(1);
+            music.stop();
             stateManager.setState(StateManager.MENUSTATE);
         }
     }

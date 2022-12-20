@@ -71,7 +71,7 @@ public class HanumanState extends State {
         enemy.add(new Ghost_Horizontal(1000, 75, 200, main_character, 2));
 
         flowers.add(new Flower(main_character, 400, 690));
-        flowers.add(new Flower(main_character, 1000, 75));
+        flowers.add(new Flower(main_character, 1000, 85));
         flowers.add(new Flower(main_character, 650, 280));
         flowers.add(new Flower(main_character, 300, 80));
         flowers.add(new Flower(main_character, 800, 380));
@@ -93,8 +93,21 @@ public class HanumanState extends State {
             flower.update();
         }
 
-        if (main_character.isDead()) stateManager.setState(StateManager.DEATHSTATE);
-        if (main_character.getX() >= 1300) stateManager.setState(StateManager.RAHWANASTATE);
+        for(Enemy ghost: enemy){
+            ghost.update();
+        }
+        for (Collectibles flower : flowers) {
+            flower.update();
+        }
+
+        if (main_character.isDead()) {
+            SaveData.writeLatestLevel(3);
+            stateManager.setState(StateManager.DEATHSTATE);
+        }
+        if (main_character.getX() >= 1300) {
+            SaveData.writeHighScore(3, String.valueOf(t.getSecond() - main_character.getScore()) + "." + String.valueOf(t.getMilisecond()));
+            stateManager.setState(StateManager.RAHWANASTATE);
+        }
         
     }
 
@@ -132,7 +145,8 @@ public class HanumanState extends State {
             main_character.set_x_speed(0);
             main_character.set_y_speed(5);
             main_character.set_direction(k);
-        }else if (k == KeyEvent.VK_ESCAPE){
+        } else if (k == KeyEvent.VK_ESCAPE) {
+            SaveData.writeLatestLevel(3);
             stateManager.setState(StateManager.MENUSTATE);
         }
     }

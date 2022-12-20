@@ -45,7 +45,7 @@ public class Jatayu extends Playable{
     }
 
     private void collidingOutsidePath(){
-        if (x <= 200 || x >= 1240){
+        if (x <= 200 && x >= 1240 && y >= 275 && y <= 475){
             y_speed = 0;
             y = 385;
         }
@@ -58,7 +58,7 @@ public class Jatayu extends Playable{
         }else if (direction == KeyEvent.VK_LEFT){
             g.drawImage(icon_left, x, y, null);
         }else if (direction == KeyEvent.VK_KP_UP){
-            g.drawImage(icon_left, x, y, null);
+            g.drawImage(icon_right, x, y, null);
         }else if (direction == KeyEvent.VK_DOWN){
             g.drawImage(icon_right, x, y, null);
         } 
