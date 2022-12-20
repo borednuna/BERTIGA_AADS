@@ -60,7 +60,7 @@ public class HanumanState extends State {
         hud = new HUD(main_character, t);
 
         enemy.add(new Ghost_Horizontal(150, 675, 350, main_character, 2));
-        enemy.add(new Ghost_Horizontal(150, 175, 200, main_character, 3));
+        enemy.add(new Ghost_Horizontal(150, 200, 200, main_character, 3));
         enemy.add(new Ghost_Vertical(500, 475, 100, main_character, 2));
         enemy.add(new Ghost_Vertical(850, 275, 350, main_character, 2));
         enemy.add(new Ghost_Horizontal(950, 675, 200, main_character, 3));
@@ -72,7 +72,7 @@ public class HanumanState extends State {
 
         flowers.add(new Flower(main_character, 400, 690));
         flowers.add(new Flower(main_character, 1000, 75));
-        flowers.add(new Flower(main_character, 650, 275));
+        flowers.add(new Flower(main_character, 650, 280));
         flowers.add(new Flower(main_character, 300, 80));
         flowers.add(new Flower(main_character, 800, 380));
         flowers.add(new Flower(main_character, 1150, 575));
