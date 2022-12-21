@@ -1,7 +1,5 @@
 package State;
 
-import Main.GamePanel;
-import Utility.*;
 import Map.Background;
 import Audio.AudioPlayer;
 
@@ -55,12 +53,6 @@ public class OpeningState extends State {
 
     @Override
     public void keyReleased(int k) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void initMaze() {
         // TODO Auto-generated method stub
         
     }

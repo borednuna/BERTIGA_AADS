@@ -1,19 +1,10 @@
 package Entity.Collectibles;
 
-import java.awt.Graphics;
-
 import Entity.Playable.Playable;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-
-import javax.imageio.ImageIO;
-
-import Main.GamePanel;
-import Map.Map;
-import Entity.Playable.*;
 import Audio.AudioPlayer;
 
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 

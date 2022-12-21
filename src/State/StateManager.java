@@ -1,12 +1,10 @@
 package State;
 
-import Utility.SaveData;
 
 public class StateManager {
     private State[] gameStates;
     private int currentState;
     private int previousState;
-    private int time;
 
     public static final int GAMESTATES = 11;
     public static final int MENUSTATE = 0;
@@ -52,10 +50,6 @@ public class StateManager {
         unloadState(currentState);
         currentState = state;
         loadState(currentState);
-    }
-
-    public void setTime(int time) {
-        this.time += time;
     }
 
     public void update() {

@@ -1,12 +1,9 @@
 package Entity;
 
 import Entity.Playable.*;
-import Main.GamePanel;
 import Utility.Time;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Objects;
 

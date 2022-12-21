@@ -21,8 +21,6 @@ public abstract class Enemy {
     public abstract void set_y_speed(int y);
     public abstract void set_x(int x);
     public abstract void set_y(int y);
-    public abstract void set_direction(int dir);
-    public abstract void collide_maze_walls(int positionX, int positionY);
     public abstract void update();
     
     public int getSpeedX() {

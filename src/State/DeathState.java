@@ -1,17 +1,14 @@
 package State;
 
 import Main.GamePanel;
-import Utility.*;
 import Map.Background;
 import Audio.AudioPlayer;
+import Utility.Utility;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
-
-import Map.Background;
-import Utility.Utility;
 
 public class DeathState extends State{
     private Background bg;
@@ -70,11 +67,4 @@ public class DeathState extends State{
         // TODO Auto-generated method stub
         
     }
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

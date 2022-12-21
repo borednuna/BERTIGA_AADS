@@ -2,6 +2,7 @@ package State;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+
 import Map.Background;
 import Audio.AudioPlayer;
 
@@ -53,11 +54,4 @@ public class Storyline3 extends State{
         // TODO Auto-generated method stub
         
     }
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-    
 }
