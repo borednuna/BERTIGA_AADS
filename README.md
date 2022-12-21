@@ -1,18 +1,19 @@
-## Getting Started
+## Ada Apa Dengan Sinta
+```
+Kelompok BERTIGA - PBO C
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Hanun Shaka Puspa       5025211051
+Salsabila Fatma Aripa   5025211057
+```
 
-## Folder Structure
+Ada Apa Dengan Sinta atau AADS adalah game dua dimensi yang mengangkat kisah pewayangan Ramayana. Cara kerja game AADS mirip seperti game arcade Pacman dimana pemain harus dapat mencapai titik akhir dari sebuah level sambil mengumpulkan item sebagai poin tambahan. Terdapat tiga level atau tiga stage utama dalam AADS yang berjalan sesuai dengan jalan cerita Ramayana. Game berakhir ketika pemain mati atau telah menyelesaikan perjalanan menyelamatkan Sinta.
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Tampilan Game
+- Tampilan Menu
+![Alt text](../../../Downloads/WhatsApp%20Image%202022-12-21%20at%2020.33.59.jpeg)
+- Tampilan Skor Tertinggi
+![Alt text](../../../Downloads/WhatsApp%20Image%202022-12-21%20at%2020.34.34.jpeg)
+- Tampilan Level Pertama
+![Alt text](../../../Downloads/WhatsApp%20Image%202022-12-21%20at%2020.34.20.jpeg)
+- Tampilan Pemain Mati
+![Alt text](../../../Downloads/WhatsApp%20Image%202022-12-21%20at%2020.35.17.jpeg)
