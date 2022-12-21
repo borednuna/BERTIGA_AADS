@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
-import java.util.Random;
 
 public class Map {
 	
@@ -35,7 +34,6 @@ public class Map {
 	
 	// tileset
 	private BufferedImage tileset;
-	private int numTilesAcross;
 	private ObjectTile tiles;
 	
 	// drawing
@@ -55,8 +53,6 @@ public class Map {
 	}
 	
 	public void loadTiles(String s) {
-        numTilesAcross = 25;
-		
 		try {
 
 			tileset = ImageIO.read(
@@ -121,19 +117,6 @@ public class Map {
 		
 		this.x += (x - this.x);
 		this.y += (y - this.y);
-		
-		// fixBounds();
-		
-		// colOffset = (int)-this.x / tileSize;
-		// rowOffset = (int)-this.y / tileSize;
-
-	}
-	
-	private void fixBounds() {
-		if(x < xmin) x = xmin;
-		if(y < ymin) y = ymin;
-		if(x > xmax) x = xmax;
-		if(y > ymax) y = ymax;
 	}
 
     public void collideRight(int positionX, int positionY, Playable player) {
@@ -176,61 +159,16 @@ public class Map {
         }
     }
 
-	public int getRandomDirection() {
-		int min = 0;
-		int max = 4;
-		// 0 RIGHT
-		// 1 LEFT
-		// 2 UP
-		// 3 DOWN
-		return (int) ((Math.random() * (max - min)) + min);
-	}
-
-	public void collideEnemy(int positionX, int positionY, Enemy npc) {
-		currentColumn = (int)((positionX - 98) / tileSize);
-        currentRow = (int)((positionY - 30) / tileSize);
-
-		int randomDir = getRandomDirection();
-
-		if (
-			npc.getSpeedX() > 0 && map[currentRow + 1][currentColumn] == 0
-			|| npc.getSpeedX() < 0 && map[currentRow][currentColumn] == 0
-			|| npc.getSpeedY() > 0 && map[currentRow + 1][currentColumn] == 0
-			|| npc.getSpeedY() < 0 && map[currentRow][currentColumn] == 0
-		) {
-			npc.set_x(currentColumn * tileSize + 98);
-			npc.set_y(currentRow * tileSize + 30);
-
-			if (randomDir == 0) {
-				npc.set_x_speed(7);
-				npc.set_y_speed(0);
-			} else if (randomDir == 1) {
-				npc.set_x_speed(-7);
-				npc.set_y_speed(0);
-			} else if (randomDir == 2) {
-				npc.set_x_speed(0);
-				npc.set_y_speed(-7);
-			} else if (randomDir == 3) {
-				npc.set_x_speed(0);
-				npc.set_y_speed(7);
-			}
-		}
-	}
-	
 	public void draw(Graphics2D g) {
 		for(
 			int row = rowOffset;
 			row < rowOffset + numRowsToDraw;
 			row++) {
 			
-			// if(row >= numRows) break;
-			
 			for(
 				int col = colOffset;
 				col < colOffset + numColsToDraw;
 				col++) {
-				
-				// if(col >= numCols) break;
 				
 				if(map[row][col] != 0) continue;
 				

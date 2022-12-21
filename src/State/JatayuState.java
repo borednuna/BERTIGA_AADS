@@ -1,7 +1,6 @@
 package State;
 
 import Main.GamePanel;
-import Utility.*;
 import Map.Background;
 import Map.Map;
 import Entity.*;
@@ -11,6 +10,7 @@ import Entity.HUD;
 import Entity.Enemy.Enemy;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.Enemy.Ghost_Vertical;
+import Utility.*;
 import Utility.Time;
 import Entity.Collectibles.Collectibles;
 import Entity.Collectibles.Flower;
@@ -22,7 +22,6 @@ import java.io.File;
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class JatayuState extends State {
     private Background bg;
@@ -156,11 +155,4 @@ public class JatayuState extends State {
         }
         
     }
-
-    @Override // gapake deh
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-    
 }

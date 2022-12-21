@@ -168,11 +168,4 @@ public class HanumanState extends State {
             main_character.set_y_speed(0);
         }
     }
-
-    @Override //gapake deh
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-    
 }
