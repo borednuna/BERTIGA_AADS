@@ -72,10 +72,4 @@ public class AboutState extends State {
 
     @Override
     public void keyReleased(int k) {}
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
 }

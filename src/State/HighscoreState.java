@@ -4,6 +4,7 @@ import Main.GamePanel;
 import Map.Background;
 import Audio.AudioPlayer;
 import Utility.*;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -72,11 +73,4 @@ public class HighscoreState extends State {
     }
     @Override
     public void keyReleased(int k) {}
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

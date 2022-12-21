@@ -1,7 +1,6 @@
 package State;
 
 import Main.GamePanel;
-import Utility.*;
 import Map.Background;
 import Map.Map;
 import Entity.*;
@@ -13,6 +12,7 @@ import Entity.Enemy.*;
 import Entity.Enemy.Ghost_Vertical;
 import Entity.Enemy.Ghost_Horizontal;
 import Entity.HUD;
+import Utility.*;
 import Utility.Time;
 import Audio.AudioPlayer;
 
@@ -20,8 +20,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class TangkapkijangState extends State {
     private List <Collectibles> flowers;
     private Time t;
     private HUD hud;
-    AudioPlayer music;
+    private AudioPlayer music;
 
     public TangkapkijangState(StateManager stateManager) {
         this.stateManager = stateManager;
@@ -152,10 +150,4 @@ public class TangkapkijangState extends State {
             main_character.set_y_speed(0);
         }
     }
-
-    @Override // kayanya g kepake
-    public void initMaze() {
-            
-    }
-
 }

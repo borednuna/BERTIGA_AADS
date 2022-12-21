@@ -13,7 +13,6 @@ import java.util.Objects;
 public class MenuState extends State {
     private Background bg;
     private AudioPlayer music;
-    private AudioPlayer selection;
 
     private int currentChoice = 0;
     private String[] options = {
@@ -117,11 +116,5 @@ public class MenuState extends State {
         if (currentChoice == 3) stateManager.setState(StateManager.ABOUTSTATE);
 
         if (currentChoice == 4) System.exit(0);
-    }
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
     }
 }

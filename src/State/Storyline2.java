@@ -53,11 +53,4 @@ public class Storyline2 extends State{
         // TODO Auto-generated method stub
         
     }
-
-    @Override
-    public void initMaze() {
-        // TODO Auto-generated method stub
-        
-    }
-    
 }
